@@ -23,6 +23,15 @@ def login():
 @app.route('/home')  # '/' for the default page
 def home():
 	return render_template('home.html', facebook_friends = facebook_friends)
+	  # '/' for the default page
+
+@app.route('/friend_exists/<string:name>')  # '/' for the default page
+def friend_exists(name):
+	if name in facebook_friends:
+		return render_template('friend_exists.html', exists = True)
+	else:
+		return render_template('friend_exists.html', exists = False)
+
 
 
 if __name__ == "__main__":  # Makes sure this is the main process
